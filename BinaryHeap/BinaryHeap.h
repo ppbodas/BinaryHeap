@@ -3,7 +3,6 @@
 #include <map> 
 #include <memory>
 
-//Fwd Declaration
 template<typename T>
 struct CHeapItem
 {
