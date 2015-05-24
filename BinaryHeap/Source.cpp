@@ -18,7 +18,7 @@ int main()
 	}
 	heap.print();
 
-	heap.changeKey(3, 1000);
+	//heap.changeKey(3, 1000);
 	
 	heap.print();
 	for (int i = 0; i < num; ++i)

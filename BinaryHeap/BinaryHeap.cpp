@@ -85,7 +85,7 @@ void CBinaryHeap<T>::print()
 template <typename T>
 void CBinaryHeap<T>::percolateUp(int pos)
 {
-	int parentPos = getParent(pos);
+	int parentPos = HeapUtil::getParent(pos);
 	if (pos != parentPos)		//Equal means we reached root
 	{
 		std::shared_ptr <CHeapItem<T>> rParent = m_rHeapItems[parentPos];
@@ -99,8 +99,8 @@ void CBinaryHeap<T>::percolateUp(int pos)
 template <typename T>
 void CBinaryHeap<T>::percolateDown(int pos)
 {
-	int l = getLeftChild(pos);
-	int r = getRightChild(pos);
+	int l = HeapUtil::getLeftChild(pos);
+	int r = HeapUtil::getRightChild(pos);
 
 	int size = m_rHeapItems.size();
 	if (l >= size)

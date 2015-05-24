@@ -45,3 +45,10 @@ Temporary Items
 *.suo
 *.filters
 *.log
+*.lastbuildstate
+*.obj
+*.tlog
+*.idb
+*.pdb
+*.exe
+*.ilk

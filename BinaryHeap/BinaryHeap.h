@@ -36,9 +36,6 @@ private:
 	void percolateUp(int pos);
 	void percolateDown(int pos);
 	void swap(int p1, int p2);
-	int getParent(int pos){return (pos -1)/2;};
-	int getLeftChild(int pos){return 2*pos + 1;};
-	int getRightChild(int pos){return 2*pos + 2;};
 
 private:
 	std::vector<std::shared_ptr <CHeapItem<T>>> m_rHeapItems;
