@@ -36,6 +36,7 @@ private:
 	void percolateUp(int pos);
 	void percolateDown(int pos);
 	void swap(int p1, int p2);
+	void postOrderPrint(int pos, int indent);
 
 private:
 	std::vector<std::shared_ptr <CHeapItem<T>>> m_rHeapItems;

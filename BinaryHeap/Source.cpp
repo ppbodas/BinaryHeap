@@ -4,7 +4,20 @@
 #include "BinaryHeap.cpp"
 using namespace std;
 
-
+void setStream()
+{
+	cout << std::setfill('*') << std::setw(30);
+}
+void resetStream()
+{
+	cout <<std::setfill(' ')<< setw(0);
+}
+void printSeperator()
+{
+	setStream();
+	cout << "*" << endl;
+	resetStream();
+}
 int main()
 {
 	CBinaryHeap<int> heap(true);
@@ -15,19 +28,24 @@ int main()
 	for (int i = 0; i < num; ++i)
 	{
 		heap.insert(arr[i], i);
+		heap.print();
+		printSeperator();
 	}
-	heap.print();
-
-	//heap.changeKey(3, 1000);
-	
-	heap.print();
+	cout << "Insert Complete" << endl;
+	vector<int> outPut;
+	outPut.reserve(num);
 	for (int i = 0; i < num; ++i)
 	{
 		auto out = heap.getMin();
-		cout << out->data << endl;
+		outPut.push_back(out->data);
+		
 		heap.deleteMin();
+		
+		printSeperator();
 
-		//heap.print();
+		heap.print();
 	}
 
+	for(auto elm : outPut)
+		cout << elm << endl;
 }

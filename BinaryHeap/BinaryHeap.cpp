@@ -1,6 +1,6 @@
 #include "BinaryHeap.h"
 #include "HeapUtil.h"
-
+#include <iomanip>
 
 template <typename T>
 CBinaryHeap<T>::CBinaryHeap(bool bSupportId = false):m_bSupportId(bSupportId)
@@ -72,16 +72,6 @@ void CBinaryHeap<T>::changeKey(int id, T value)
 
 }
 
-
-template <typename T>
-void CBinaryHeap<T>::print()
-{
-	for (auto rHeapItem : m_rHeapItems)
-	{
-		cout << rHeapItem->data << "   ";
-	}
-	cout << endl;
-}
 template <typename T>
 void CBinaryHeap<T>::percolateUp(int pos)
 {
@@ -92,6 +82,7 @@ void CBinaryHeap<T>::percolateUp(int pos)
 		if (rParent->data > m_rHeapItems[pos]->data)
 		{
 			swap(pos,parentPos);
+			percolateUp(parentPos);
 		}
 	}
 }
@@ -137,4 +128,40 @@ void CBinaryHeap<T>::swap(int p1, int p2)
 		m_idPosMap[id1] = p2;
 		m_idPosMap[id2] = p1;
 	}
+}
+
+template <typename T>
+void CBinaryHeap<T>::postOrderPrint(int pos, int indent)
+{
+	auto size = m_rHeapItems.size();
+	if (pos >= size)
+		return;
+
+	auto l = HeapUtil::getLeftChild(pos);
+	auto r = HeapUtil::getRightChild(pos);
+
+	if(r < size) 
+	{
+		postOrderPrint(r, indent+4);
+	}
+	if (indent) 
+	{
+		std::cout << std::setw(indent) << ' ';
+	}
+	if (r <size)
+		std::cout<<" /\n" << std::setw(indent) << ' ';
+
+	std::cout<< m_rHeapItems[pos]->data << "\n ";
+
+	if(l < size) 
+	{
+		std::cout << std::setw(indent) << ' ' <<" \\\n";
+		postOrderPrint(l, indent+4);
+	}
+}
+
+template <typename T>
+void CBinaryHeap<T>::print()
+{
+	postOrderPrint(0,0);
 }
